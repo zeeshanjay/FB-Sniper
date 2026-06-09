@@ -36,7 +36,7 @@ const NAV_SECTIONS = [
   {
     title: "Account",
     items: [
-      { icon: Key,      label: "Meta Token" },
+      { icon: Key,      label: "Facebook Accounts" },
       { icon: Settings, label: "Settings" },
     ],
   },
@@ -52,13 +52,13 @@ const STATS = [
 const SETUP_STEPS = [
   { label: "Create account",        done: true  },
   { label: "Verify email via OTP",  done: true  },
-  { label: "Connect Meta token",    done: false },
+  { label: "Connect Facebook Accounts",    done: false },
   { label: "Add target groups",     done: false },
   { label: "Launch first campaign", done: false },
 ];
 
 const QUICK_ACTIONS = [
-  { icon: Key,    label: "Connect Meta Token",    color: "#f59e0b" },
+  { icon: Key,    label: "Connect Facebook Accounts",    color: "#f59e0b" },
   { icon: Target, label: "New Sniper Campaign",   color: "#3b82f6" },
   { icon: Users,  label: "Manage Groups",         color: "#8b5cf6" },
   { icon: FileText, label: "Create Post Draft",   color: "#10b981" },
@@ -560,7 +560,7 @@ export default function DashboardPage() {
       (response: any) => {
         if (response.authResponse) {
           setTokenVerifying(true);
-          setActiveNav("Meta Token");
+          setActiveNav("Facebook Accounts");
           fetch("/api/auth/exchange-token", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -670,7 +670,7 @@ export default function DashboardPage() {
   const setupSteps = [
     { label: "Create account",        done: true },
     { label: "Verify email via OTP",  done: true },
-    { label: "Connect Meta token",    done: tokenSaved },
+    { label: "Connect Facebook Accounts",    done: tokenSaved },
     { label: "Add target groups",     done: groups.length > 0 },
     { label: "Launch first campaign", done: campaignCount > 0 || campaigns.length > 0 },
   ];
@@ -986,7 +986,7 @@ export default function DashboardPage() {
               {/* Title */}
               <h2 style={{ textAlign: "center", margin: "0 0 0.625rem", fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: "1.1875rem", fontWeight: 700, color: "var(--text-1)", letterSpacing: "-0.3px" }}>Delete Your Account</h2>
               <p style={{ textAlign: "center", margin: "0 0 1.75rem", fontSize: "0.8125rem", color: "var(--text-2)", lineHeight: "1.65em" }}>
-                This will permanently remove your account, all campaigns, groups, pages, and Meta token data.<br />
+                This will permanently remove your account, all campaigns, groups, pages, and Facebook Accounts data.<br />
                 <strong style={{ color: "var(--text-1)" }}>This action cannot be undone.</strong>
               </p>
 
@@ -1058,7 +1058,7 @@ export default function DashboardPage() {
             <p style={{ margin: "0 0 0.1875rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>Welcome back,</p>
             <h2 style={{ margin: "0 0 0.5rem", fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, fontSize: "1.375rem", color: "#ffffff", letterSpacing: "-0.4px" }}>{firstName} 👋</h2>
             <p style={{ margin: 0, fontSize: "0.8125rem", color: "rgba(255,255,255,0.45)", lineHeight: "1.5em" }}>
-              {tokenSaved ? "Your Meta account is connected. Ready to snipe groups and pages." : "Connect your Meta token to start sniping groups and pages."}
+              {tokenSaved ? "Your Meta account is connected. Ready to snipe groups and pages." : "Connect your Facebook Accounts to start sniping groups and pages."}
             </p>
           </div>
           {tokenSaved ? (
@@ -1114,7 +1114,7 @@ export default function DashboardPage() {
                   </div>
                 );
               })
-            ) : emptyState(<Activity size={18} color="#c0c8cf" />, "No activity yet", "Connect your Meta token and start a campaign to see logs here.")}
+            ) : emptyState(<Activity size={18} color="#c0c8cf" />, "No activity yet", "Connect your Facebook Accounts and start a campaign to see logs here.")}
           </div>
 
           {/* Right column */}
@@ -1152,7 +1152,7 @@ export default function DashboardPage() {
             {!tokenSaved && (
               <div style={{ backgroundColor: "#fff9f0", borderRadius: "0.75rem", border: "1px solid #fde8c0", padding: "1rem 1.125rem", display: "flex", gap: "0.625rem" }}>
                 <AlertCircle size={16} color="#f59e0b" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: "1px" }} />
-                <div><p style={{ margin: "0 0 0.1875rem", fontSize: "0.8125rem", fontWeight: 600, color: "var(--text-1)" }}>Meta token required</p><p style={{ margin: 0, fontSize: "0.75rem", color: "var(--text-2)", lineHeight: "1.5em" }}>Go to <strong>Meta Token</strong> in the sidebar to connect Facebook.</p></div>
+                <div><p style={{ margin: "0 0 0.1875rem", fontSize: "0.8125rem", fontWeight: 600, color: "var(--text-1)" }}>Facebook Accounts required</p><p style={{ margin: 0, fontSize: "0.75rem", color: "var(--text-2)", lineHeight: "1.5em" }}>Go to <strong>Facebook Accounts</strong> in the sidebar to connect Facebook.</p></div>
               </div>
             )}
           </div>
@@ -1711,7 +1711,7 @@ export default function DashboardPage() {
           <div style={{ backgroundColor: "#f0f9ff", borderRadius: "0.75rem", border: "1px solid #bae6fd", padding: "0.875rem 1.125rem", marginBottom: "1.25rem", display: "flex", alignItems: "center", gap: "0.625rem" }}>
             <CheckCircle2 size={15} color="#0284c7" strokeWidth={2.5} style={{ flexShrink: 0 }} />
             <p style={{ margin: 0, fontSize: "0.8125rem", color: "#0c4a6e", lineHeight: "1.5em" }}>
-              Pages shown below are grouped by your connected Facebook accounts. Manage connections in the Meta Token settings.
+              Pages shown below are grouped by your connected Facebook accounts. Manage connections in the Facebook Accounts settings.
             </p>
           </div>
         )}
@@ -1765,7 +1765,7 @@ export default function DashboardPage() {
           )}
         </div>
         ))}
-        {connectedAccounts.length === 0 && emptyState(<Key size={18} color="#c0c8cf" />, "Meta not connected", "Go to Meta Token and connect your Facebook account first.")}
+        {connectedAccounts.length === 0 && emptyState(<Key size={18} color="#c0c8cf" />, "Meta not connected", "Go to Facebook Accounts and connect your Facebook account first.")}
       </>
     );
 
@@ -2010,13 +2010,13 @@ export default function DashboardPage() {
       );
     }
 
-    // ── META TOKEN ────────────────────────────────────────────────────────────
-    if (activeNav === "Meta Token") {
+    // ── Facebook Accounts ────────────────────────────────────────────────────────────
+    if (activeNav === "Facebook Accounts") {
       return (
         <>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.5rem" }}>
             <div>
-              <h2 style={{ margin: "0 0 0.25rem", fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, fontSize: "1.25rem", color: "var(--text-1)", letterSpacing: "-0.4px" }}>Meta Token</h2>
+              <h2 style={{ margin: "0 0 0.25rem", fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, fontSize: "1.25rem", color: "var(--text-1)", letterSpacing: "-0.4px" }}>Facebook Accounts</h2>
               <p style={{ margin: 0, fontSize: "0.8125rem", color: "var(--text-2)" }}>
                 {tokenSaved ? "Your Facebook account is connected and automations are enabled." : "Connect your Facebook account to enable automations."}
               </p>
@@ -2144,78 +2144,21 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: "1.25rem" }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                  <div style={{ ...card, padding: "1.5rem" }}>
-                    <h3 style={{ ...h3, marginBottom: "0.375rem" }}>Connect Your Account</h3>
-                    <p style={{ margin: "0 0 1.25rem", fontSize: "0.75rem", color: "var(--text-2)", lineHeight: "1.5em" }}>Authorize Astraventa to manage your Facebook groups and pages on your behalf.</p>
-                    <button
-                      onClick={handleConnectMeta}
-                      disabled={tokenVerifying}
-                      style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.625rem", width: "100%", padding: "0.75rem 1rem", borderRadius: "0.5625rem", border: "none", backgroundColor: tokenVerifying ? "#4a90d9" : "#1877F2", color: "#ffffff", fontSize: "0.9375rem", fontWeight: 700, fontFamily: "Interdisplay, Arial, sans-serif", cursor: tokenVerifying ? "not-allowed" : "pointer", letterSpacing: "-0.1px", transition: "background-color 0.2s ease" }}
-                    >
-                      {tokenVerifying ? (
-                        <><div style={{ width: "16px", height: "16px", border: "2px solid rgba(255,255,255,0.35)", borderTopColor: "#fff", borderRadius: "50%", animation: "spin 0.7s linear infinite", flexShrink: 0 }} />Connecting…</>
-                      ) : (
-                        <><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Continue with Facebook</>
-                      )}
-                    </button>
-                  </div>
-
-                  <div style={{ ...card, padding: "1.5rem" }}>
-                    <h3 style={{ ...h3, marginBottom: "1.25rem" }}>How to Get Your Token</h3>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                      {[
-                        { n: "1", title: "Open Meta Developer Portal", desc: "Go to developers.facebook.com and log in with your Facebook account." },
-                        { n: "2", title: "Create or open a Business App", desc: "Create a new app or use an existing one. Select Business type." },
-                        { n: "3", title: "Generate User Access Token", desc: "Use the Graph API Explorer. Select your app, add the required permissions, then click Generate." },
-                      ].map((s) => (
-                        <div key={s.n} style={{ display: "flex", gap: "0.875rem" }}>
-                          <div style={{ width: "28px", height: "28px", borderRadius: "50%", backgroundColor: "#1d1d1d", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.75rem", fontWeight: 700, flexShrink: 0, marginTop: "1px" }}>{s.n}</div>
-                          <div>
-                            <p style={{ margin: "0 0 0.25rem", fontSize: "0.8125rem", fontWeight: 600, color: "var(--text-1)" }}>{s.title}</p>
-                            <p style={{ margin: 0, fontSize: "0.75rem", color: "var(--text-2)", lineHeight: "1.5em" }}>{s.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                  <div style={{ ...card, padding: "1.375rem" }}>
-                    <h3 style={{ ...h3, marginBottom: "0.375rem" }}>Required Permissions</h3>
-                    <p style={{ margin: "0 0 1rem", fontSize: "0.75rem", color: "var(--text-2)" }}>Select these scopes in Graph API Explorer</p>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-                      {[
-                        { name: "pages_show_list",      color: "#3b82f6", desc: "List pages you manage" },
-                        { name: "pages_manage_posts",   color: "#10b981", desc: "Create posts on pages" },
-                        { name: "pages_read_engagement",color: "#f59e0b", desc: "Read page engagement" },
-                      ].map((p) => (
-                        <div key={p.name} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem", padding: "0.625rem 0.75rem", borderRadius: "0.5rem", backgroundColor: "var(--hover-bg)", border: "1px solid var(--border)" }}>
-                          <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: p.color, marginTop: "6px", flexShrink: 0 }} />
-                          <div>
-                            <p style={{ margin: "0 0 0.125rem", fontSize: "0.75rem", fontWeight: 600, color: "var(--text-1)", fontFamily: "monospace" }}>{p.name}</p>
-                            <p style={{ margin: 0, fontSize: "0.6875rem", color: "var(--text-2)" }}>{p.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div style={{ ...card, padding: "1.375rem" }}>
-                    <h3 style={{ ...h3, marginBottom: "0.875rem" }}>Token Tips</h3>
-                    {[
-                      { icon: AlertCircle, color: "#f59e0b", text: "Short-lived tokens expire in 1–2 hours. Always use a long-lived token." },
-                      { icon: CheckCircle2, color: "#10b981", text: "Long-lived tokens last ~60 days. Reconnect before they expire." },
-                      { icon: Key,          color: "#3b82f6", text: "Never share your token. Treat it like a password." },
-                    ].map(({ icon: Icon, color, text }, i) => (
-                      <div key={i} style={{ display: "flex", gap: "0.625rem", marginBottom: i < 2 ? "0.75rem" : 0 }}>
-                        <Icon size={14} color={color} strokeWidth={2.5} style={{ flexShrink: 0, marginTop: "1px" }} />
-                        <p style={{ margin: 0, fontSize: "0.75rem", color: "var(--text-2)", lineHeight: "1.5em" }}>{text}</p>
-                      </div>
-                    ))}
-                  </div>
+              <div style={{ maxWidth: "600px" }}>
+                <div style={{ ...card, padding: "2rem" }}>
+                  <h3 style={{ ...h3, marginBottom: "0.5rem" }}>Connect Your Account</h3>
+                  <p style={{ margin: "0 0 1.5rem", fontSize: "0.875rem", color: "var(--text-2)", lineHeight: "1.5em" }}>Authorize Astraventa to manage your Facebook groups and pages on your behalf. You can connect up to 5 accounts.</p>
+                  <button
+                    onClick={handleConnectMeta}
+                    disabled={tokenVerifying}
+                    style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.625rem", padding: "0.875rem 1.5rem", borderRadius: "0.625rem", border: "none", backgroundColor: tokenVerifying ? "#4a90d9" : "#1877F2", color: "#ffffff", fontSize: "0.9375rem", fontWeight: 700, fontFamily: "Interdisplay, Arial, sans-serif", cursor: tokenVerifying ? "not-allowed" : "pointer", letterSpacing: "-0.1px", transition: "background-color 0.2s ease" }}
+                  >
+                    {tokenVerifying ? (
+                      <><div style={{ width: "16px", height: "16px", border: "2px solid rgba(255,255,255,0.35)", borderTopColor: "#fff", borderRadius: "50%", animation: "spin 0.7s linear infinite", flexShrink: 0 }} />Connecting…</>
+                    ) : (
+                      <><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Continue with Facebook</>
+                    )}
+                  </button>
                 </div>
               </div>
             </>
