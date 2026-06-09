@@ -89,7 +89,7 @@ export default function TwoFAChallengePage() {
         <div style={{ position: "absolute", bottom: "-80px", left: "-80px", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(64,106,228,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         <div>
-          <Image src="/logo-new.png" alt="Astraventa" width={160} height={40} style={{ objectFit: "contain", objectPosition: "left", filter: "brightness(0) invert(1)" }} />
+          <Image src="/logo-new-white.png" alt="Astraventa" width={160} height={40} style={{ objectFit: "contain", objectPosition: "left" }} />
         </div>
 
         <div style={{ position: "relative", zIndex: 2 }}>
