@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"s:\\\\3D Objects\\\\Client_Work\\\\Sniper\\\\backend\" -Depth 2 | Select-Object FullName | Where-Object { $_.FullName -match \"main\\\\.py|uvicorn|venv\" })"
+    ]
+  }
+}
